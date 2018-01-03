@@ -10,6 +10,7 @@ Takes screenshots and uploads them to puush using the puush API and copies the l
   - (You can find your API key at http://puush.me/account/settings)
 - Make it executable using __chmod +x puush__
 - Place this file wherever you want (recommended: /usr/local/bin)
+- Install shutter if not present (check with `shutter -v`) using `sudo apt-get install shutter`
 - Set up keyboard shortcuts within linux
   - (in Ubuntu it's system settings > keyboard > keyboard shortcuts > custom shortcuts)
   - (in Xubuntu it's keyboard > application shortcuts > add)
