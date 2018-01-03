@@ -2,13 +2,15 @@
 # Set API Key here
 PUUSH_API_KEY=""
 
-# Puush for Ubuntu/linux
-# Owner : Sunmock Yang
+#put this file in /usr/local/bin
+
+# Puush for linux
+# Owner : Sunmock Yang (modified for shutter by Vikram Melkote)
 # www.sunmock.com
-# May 2014
+# May 2014 (edited Jan 2018)
 #
 # Dependencies:
-# - gnome-screenshot
+# - shutter
 # - curl
 # - zenity
 # - xclip
@@ -40,9 +42,9 @@ function puushFile ()
 	if [ -z "$1" ]; then
 		echo "No file specified"
 		exit 1
-	elif [ ! -f "$1" ]; then
-		echo "Puush cancelled"
-		exit 1
+	# elif [ ! -f "$1" ]; then
+	# 	echo "Puush cancelled"
+	# 	exit 1
 	fi
 
 	fileURL=`curl "https://puush.me/api/up" -# -F "k=$PUUSH_API_KEY" -F "z=waifu" -F "f=@$1" | sed -E 's/^.+,(.+),.+,.+$/\1\n/'`
@@ -75,7 +77,7 @@ function helpText ()
   printf "  PATH               optional: path of file to puush\n"
 }
 
-function generateFileName () { echo "/tmp/puush-linux ($(date +"%Y-%m-%d at %I.%M.%S")).png"; }
+function generateFileName () { echo "/home/dunixify/puush/Screenshot_Xubuntu_$(date +"%Y-%m-%d_%H-%M-%S").png"; }
 
 
 if [ -z "$PUUSH_API_KEY" ]; then
@@ -95,28 +97,28 @@ fi
 
 #Get file to puush and puush it
 case "$1" in
-	-a)
+	-d)
 		echo "Whole Desktop"
 			fileName=$(generateFileName)
-			gnome-screenshot -f "$fileName"
-			puushFile "$fileName"
+			shutter -f -e -n -o "$fileName"
+			sleep 3 && puushFile "$fileName"
 		;;
 
-	-b)
+	-r)
 		echo "Area"
 			fileName=$(generateFileName)
-			gnome-screenshot -a -f "$fileName"
-			puushFile "$fileName"
+			shutter -s -e -n -o "$fileName"
+			sleep 3 && puushFile "$fileName"
 		;;
 
-	-c)
+	-w)
 		echo "Window"
 			fileName=$(generateFileName)
-			gnome-screenshot -w -f "$fileName"
-			puushFile "$fileName"
+			shutter -a -e -n -o "$fileName"
+			sleep 3 && puushFile "$fileName"
 		;;
 
-	-d)
+	-f)
 		echo "File Upload"
 			fileName=`zenity --file-selection`
 			puushFile "$fileName"

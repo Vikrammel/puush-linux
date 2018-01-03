@@ -2,7 +2,7 @@ Puush in Linux
 =====================
 
 Takes screenshots and uploads them to puush using the puush API and copies the link to clipboard. Recommended for set up with keyboard shortcuts
-<br>Utilises __gnome-screenshot__ for taking screenshots, __zenity__ for file uploads (both included in Ubuntu).
+<br>Utilises __shutter__ for taking screenshots, __zenity__ for file uploads (shutter not included in X/L/Ubuntu).
 
 ## Instructions
 - Clone or download the repo
@@ -12,21 +12,22 @@ Takes screenshots and uploads them to puush using the puush API and copies the l
 - Place this file wherever you want (recommended: /usr/local/bin)
 - Set up keyboard shortcuts within linux
   - (in Ubuntu it's system settings > keyboard > keyboard shortcuts > custom shortcuts)
+  - (in Xubuntu it's keyboard > application shortcuts > add)
   - Log out for the changes to take place
   - Here's what it looks like for mine: ![Puush keyboard setup](http://puu.sh/cOyVz/8dcb1cd498.png)
 
 ### Commands
 ``` bash
-puush -a		# puush desktop
-puush -b		# area puush
-puush -c		# puush window
-puush -d		# file upload
+puush -d		# puush desktop
+puush -r		# area puush
+puush -w		# puush current active window
+puush -f		# file upload
 
 puush -h  	  # help
 ```
 
 ## Dependencies
-- gnome-screenshot
+- shutter
 - zenity
 - curl
 - xclip
@@ -36,3 +37,5 @@ puush -h  	  # help
 ### Alternatives
 - puush in command line https://github.com/blha303/puush-linux
 - puush using keyboard https://github.com/sgoo/puush-linux
+
+originally made by Sunmock Yang, modified by Vikram Melkote
