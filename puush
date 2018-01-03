@@ -3,6 +3,7 @@
 PUUSH_API_KEY=""
 
 #put this file in /usr/local/bin
+#Install shutter if not present (check with `shutter -v`) using `sudo apt-get install shutter`
 
 # Puush for linux
 # Owner : Sunmock Yang (modified for shutter by Vikram Melkote)
